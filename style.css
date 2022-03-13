@@ -110,7 +110,7 @@ body.home{
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 100;
-	font-size: 110px;
+	font-size: 7vw;
 	line-height: 120px;
 	text-transform: uppercase;
 
@@ -173,10 +173,12 @@ body.home{
 	bottom: 8%;
 	left: 50%;
 	transform: translateX(-50%); 
+	width: fit-content;
 
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	color: whitesmoke;
+	border: 0px solid red;
 }
 .home-page .menu .item{
 	font-family: 'Roboto';
@@ -192,6 +194,7 @@ body.home{
 	transition: 0.5s all;
 	z-index: 20;
 	cursor: pointer;
+	border: 0px solid green;
 }
 .home-page .menu .item:hover{
 	color: rgba(255, 255, 255, 1);
@@ -214,7 +217,9 @@ body.home{
 	opacity: 70%;
 	cursor: pointer;
 	transition: 0.5s all;
+
 }
 .home-page .social-panel .item:hover{
 	opacity: 100%;
+	transform: scale(1.1);
 }
