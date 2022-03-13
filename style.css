@@ -7,6 +7,7 @@ body, html{
 }
 body.home{
 	background-color: rgba(2, 20, 34, 1);
+	overflow: hidden;
 }
 .circle, .bg-circle{
 	position: absolute;
@@ -20,6 +21,7 @@ body.home{
 	-mix-blend-mode: difference;
 	backdrop-filter: hue-rotate(90deg);
 	transition: 0.2s;
+	z-index: 10;
 }
 .bg-circle{
 	background-color: rgba(255, 255, 255, 0.25);
@@ -28,6 +30,9 @@ body.home{
 .mouseHover{
 	border: 1px solid red;
 	padding: 20px;
+}
+.hoverables{
+	z-index: 30;
 }
 .projects-bg{
 	border: 0px solid red;
@@ -55,7 +60,7 @@ body.home{
 .home-page{
 	opacity: 100%;
 	z-index: 0;
-	border: 1px solid red;
+	border: 0px solid red;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
@@ -72,8 +77,144 @@ body.home{
 .home-page .section{
 	width: 50%;
 	height: 100%;
-	border: 2px solid green;
+	border: 0px solid green;
+}
+.home-page .section.left{
+	width: 60%;
+}
+.home-page .section.right{
+	width: 40%;
+}
+.home-page .section.left .text{
+	border: 0px solid red;
+	margin: 20% 0 0 10%;
+	transition: 0.5s all;
+}
+.home-page .section.left .text .intro{
+	color: whitesmoke;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 18px;
+	line-height: 30px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	transition: 0.5s all;
+}
+.home-page .section.left .text .name{
+	/* width: 701px;
+	height: 141px;
+	left: 154px;
+	top: 383px; */
+
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 100;
+	font-size: 110px;
+	line-height: 120px;
+	text-transform: uppercase;
+
+	background: linear-gradient(90deg, #FB9AB7 -48.73%, #76CEFF 120.91%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+
+	-text-shadow: 5px 4px 10px rgba(0, 0, 0, 0.75);
+	border: 0px solid green;
+	transition: 0.5s all;
+}
+.home-page .section.left .text .bio{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 100;
+	font-size: 30px;
+	line-height: 41px;
+	/* identical to box height */
+
+	letter-spacing: 0.02em;
+	font-feature-settings: 'tnum' on, 'onum' on, 'case' on, 'cpsp' on, 'ordn' on, 'sinf' on;
+
+	color: #FFFFFF;
+	transition: 0.5s all;
+}
+.home-page .section.left .text .tags{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 25px;
+	line-height: 35px;
+	letter-spacing: 0.02em;
+
+	color: rgba(255, 255, 255, 0.5);
+	transition: 0.5s all;
+}
+.home-page .section.right .content{
+	position: relative;
+	border: 0px solid yellow;
+	width: fit-content;
+	height: fit-content;
+	position: relative;
+	margin-top: 50px;
+}
+.home-page .section.right .content .profile-img{
+	transform: scale(0.8);
+	border: 0px solid red;
+
+}
+.home-page .section.right .content .about-me-blob{
+	transform: scale(0.8);
+	position: absolute;
+	top: 20%;
+	right: 8%;
+
 }
 .home-page .menu{
 	position: fixed;
+	bottom: 8%;
+	left: 50%;
+	transform: translateX(-50%); 
+
+	display: flex;
+	flex-flow: row wrap;
+	color: whitesmoke;
+}
+.home-page .menu .item{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 25px;
+	line-height: 30px;
+	margin: 0px 20px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.7);
+
+	transition: 0.5s all;
+	z-index: 20;
+	cursor: pointer;
+}
+.home-page .menu .item:hover{
+	color: rgba(255, 255, 255, 1);
+	transition: 0.5s all;
+}
+.social-panel{
+	position: absolute;
+	color: whitesmoke;
+	font-size: 32px;
+	display: flex;
+
+}
+.home-page .social-panel{
+	right: 2%;
+	flex-flow: column wrap;
+	top: 2%;
+}
+.home-page .social-panel .item{
+	margin: 10px 0 10px 0;
+	opacity: 70%;
+	cursor: pointer;
+	transition: 0.5s all;
+}
+.home-page .social-panel .item:hover{
+	opacity: 100%;
 }
