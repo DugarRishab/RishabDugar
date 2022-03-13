@@ -159,6 +159,7 @@ body.home{
 .home-page .section.right .content .profile-img{
 	transform: scale(0.8);
 	border: 0px solid red;
+	width: 27vw;
 
 }
 .home-page .section.right .content .about-me-blob{
@@ -166,7 +167,7 @@ body.home{
 	position: absolute;
 	top: 20%;
 	right: 8%;
-
+	width: 4vw;
 }
 .home-page .menu{
 	position: fixed;
