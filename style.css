@@ -1,0 +1,56 @@
+body, html{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.circle, .bg-circle{
+	position: absolute;
+	border: solid 2px rgba(204, 204, 204, 0.767);
+	width: 40px; 
+	height: 40px; 
+	border-radius: 50%; 
+	-background-color: rgba(255, 255, 255, 0.3);
+	-box-shadow: 0px 0px 50px 1px rgba(255, 255, 255, 0.4);
+	-filter: difference;
+	-mix-blend-mode: difference;
+	backdrop-filter: hue-rotate(90deg);
+	transition: 0.2s;
+}
+.bg-circle{
+	background-color: rgba(255, 255, 255, 0.25);
+	border: solid 0px rgb(204, 204, 204);
+}
+.boxes{
+	display: flex;
+}
+.boxe1{
+	height: 300px;
+	width: 300px;
+	background: linear-gradient(45deg, red, blue);
+}
+.boxe2{
+	height: 300px;
+	width: 300px;
+	background: linear-gradient(0deg, rgb(0, 124, 226), rgb(177, 56, 0));
+}
+.boxe3{
+	height: 300px;
+	width: 300px;
+	background: linear-gradient(0deg, rgb(10, 145, 255), rgb(27, 85, 151));
+}
+.boxe4{
+	height: 300px;
+	width: 300px;
+	background: linear-gradient(0deg, rgb(201, 47, 0), rgb(184, 80, 32));
+}
+.boxes .mouseHover{
+	color:  white;
+	font-size: 30px;
+	font-weight: 600;
+}
+.mouseHover{
+	border: 1px solid red;
+	padding: 20px;
+}
