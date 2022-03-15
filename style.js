@@ -1,5 +1,9 @@
 window.onload = () => {
-
+	mouseFunctions();
+	pageChange();
+	
+}
+const mouseFunctions = () => {
 	let mousex = 0, mousey = 0;
 	let xp = 0; yp = 0;
 
@@ -11,25 +15,6 @@ window.onload = () => {
 	const mouseCircle = document.querySelector(".circle");
 	const mouseBgCircle = document.querySelector(".bg-circle");
 	const mouseHoverText = document.querySelectorAll(".mouseHover");
-
-	// mouseHoverText.forEach(item => {
-	// 	item.addEventListener("mouseover", () => {
-	// 		mouseBgCircle.style.opacity = "0%";
-	// 		mouseCircle.style.transform = "scale(2)";
-	// 	});
-	// 	item.addEventListener("mousemouve", () => {
-	// 		mouseBgCircle.style.opacity = "0%";
-	// 		mouseCircle.style.transform = "scale(2)";
-	// 	});
-
-	// 	item.addEventListener("mouseout", e => {
-	// 		e.preventDefault();
-
-	// 		mouseBgCircle.style.opacity = "100%";
-	// 		mouseCircle.style.transform = "scale(1)";
-	// 	});
-
-	// });
 
 	document.addEventListener('mousemove', e => {
 		const tgt = e.target;
@@ -85,4 +70,55 @@ window.onload = () => {
 	setInterval(() => {
 		
 	}, 1000)
+}
+const pageChange = () => {
+	const loadingTime = 2000;
+	const body = document.querySelector("body");
+	const homeBtn = document.querySelector("#home-btn");
+	const aboutBtn = document.querySelector("#about-me-btn");
+
+	const homePage = document.querySelector("#home-page");
+	const aboutPage = document.querySelector("#about-me-page");
+
+	const aboutToken = document.querySelector("#about-me-blob");
+
+	aboutBtn.addEventListener('click', () => {
+
+		aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
+		setTimeout(() => {
+			body.classList.remove("home");
+			body.classList.add("about-me");
+			
+		}, loadingTime * 2 / 3);
+		setTimeout(() => {
+			
+			//aboutPage.classList.add('active');
+			homePage.classList.remove('active');
+			aboutToken.style.animation = "";
+			//body.classList = "";
+			//body.classList.add("about-me");
+			//body.className = "about-me";
+
+		}, loadingTime * 4 / 5);
+		setTimeout(() => {
+			
+			aboutPage.classList.add('active');
+			
+
+		}, loadingTime * 5 / 5);
+		
+		console.log('click detected');
+		
+		//aboutToken.style.opacity = "100%";
+	});
+
+	homeBtn.addEventListener('click', () => {
+
+		body.classList.remove("home");
+		body.classList.remove("about-me");
+		body.classList.add("home");
+		aboutPage.classList.remove('active');
+		homePage.classList.add('active');
+		console.log('click detected');
+	});
 }
