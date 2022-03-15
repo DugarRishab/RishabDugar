@@ -3,7 +3,7 @@ body, html{
 	height: 100%;
 	width: 100%;
 	margin: 0;
-	
+	scroll-behavior: smooth;
 }
 body.home{
 	background-color: rgba(2, 20, 34, 1);
@@ -15,7 +15,8 @@ body.about-me{
 	-overflow: hidden;
 	overflow-x: hidden;
 	transition: 1s all;
-	background-size: 100vw 6000px;
+	background-size: 100vw 5000px;
+	scroll-behavior: smooth;
 }
 
 .circle, .bg-circle{
@@ -41,7 +42,7 @@ body.about-me{
 	padding: 20px;
 }
 .hoverables{
-	z-index: 30;
+	z-index: 40;
 }
 .projects-bg{
 	border: 0px solid red;
@@ -78,7 +79,7 @@ body.about-me{
 }
 .home-page.active{
 	opacity: 100%;
-	z-index: 0;
+	z-index: 30;
 }
 .about-page{
 	opacity: 0%;
@@ -87,7 +88,7 @@ body.about-me{
 }
 .about-page.active{
 	opacity: 100%;
-	z-index: 0;
+	z-index: 30;
 }
 .projects-page{
 	opacity: 0%;
@@ -203,13 +204,14 @@ body.about-me{
 	right: 2%;
 	flex-flow: column wrap;
 	top: 2%;
+	z-index: 30;
 }
 .home-page .social-panel .item{
 	margin: 10px 0 10px 0;
 	opacity: 70%;
 	cursor: pointer;
 	transition: 0.5s all;
-
+	z-index: 30;
 }
 .home-page .social-panel .item:hover{
 	opacity: 100%;
@@ -241,7 +243,7 @@ body.about-me{
 	color: rgba(255, 255, 255, 0.7);
 
 	transition: 0.5s all;
-	z-index: 20;
+	z-index: 30;
 	cursor: pointer;
 	border: 0px solid green;
 }
@@ -267,35 +269,57 @@ body.about-me .menu .item:hover{
 	color: rgb(0, 34, 58, 1);
 }
 
+/* BUTTONS */
+.button{
+	padding: 10px 25px 10px 25px;
+	font-size: 20px;
+	cursor: pointer;
+	z-index: 30;
+	border-radius: 15px;
+	transition: 0.5s all;
+	text-decoration: none;
+}
+.button.secondary{
+	color: #00223A;
+	border: 2px solid #00223A;
+}
+.button.secondary:hover{
+	-color:#FB9AB7;
+	-border: 2px solid #FB9AB7;
+	-background-color: #00223A;
+	-color: #FB9AB7;
+	-border: 4px solid #00223A;
+}
+
 /* ABOUT ME */
 .about-page{
 	display: flex;
 	flex-direction: row;
 	border: 2px solid cyan;
 	width: 100vw;
-	height: 100vh;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	height: 6000px;
+	height: 4200px;
 	transition: 0.5s all;
+	scroll-behavior: smooth;
 }
 .about-page .section.left{
 	width: 15%;
 	height: 100vh;
-	border: 2px solid red;
+	border: 0px solid red;
 	max-width: 350px;
 }
 .about-page .section.right{
 	width: 20%;
 	height: 100vh;
-	border: 2px solid blue;
+	border: 0px solid blue;
 	max-width: 400px;
 }
 .about-page .section.middle{
 	width: 50%;
 	height: 100vh;
 	flex-grow: 1;
-	border: 2px solid green;
+	border: 0px solid green;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -303,11 +327,12 @@ body.about-me .menu .item:hover{
 .about-page .section.middle .part{
 	height: fit-content;
 	width: 100%;
-	border: 2px solid yellow;
+	border: 0px solid yellow;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin: 50px 0 50px 0;
 }
 .about-page .title{
 	font-family: 'Roboto';
@@ -328,13 +353,15 @@ body.about-me .menu .item:hover{
 	text-fill-color: transparent;
 
 	text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+	margin: 100px 0 0 0;
 }
+
 .about-page .heading{
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 200;
-	font-size: 50px;
-	line-height: 59px;
+	font-size: 40px;
+	line-height: 65px;
 	/* identical to box height */
 
 	display: flex;
@@ -353,8 +380,9 @@ body.about-me .menu .item:hover{
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 300;
-	font-size: 35px;
-	line-height: 41px;
+	font-size: 25px;
+	line-height: 45px;
+	margin: 10px 0 15px 0;
 	/* identical to box height */
 
 	display: flex;
@@ -362,14 +390,16 @@ body.about-me .menu .item:hover{
 	letter-spacing: 0.02em;
 
 	color: #00223A;
+	text-decoration: none;
 }
 .about-page .text{
 
 	font-family: 'Roboto';
 	font-style: normal;
 	font-weight: 400;
-	font-size: 25px;
-	line-height: 40px;
+	font-size: 20px;
+	line-height: 35px;
+	
 	/* or 160% */
 
 	display: flex;
@@ -378,7 +408,134 @@ body.about-me .menu .item:hover{
 
 	color: rgba(0, 34, 58, 0.7);
 }
+.about-page .section.middle .part2{
+	display: flex;
+	flex-direction: column;
+	flex-flow: column wrap;
 
+}
+.about-page .section.middle .part2 .items{
+	display: flex;
+	flex-flow: column wrap;
+	max-height: 1000px;
+	align-items: center;
+	justify-content: space-around;
+	border: 0px solid rgb(0, 102, 128);
+
+}
+.about-page .section.middle .part2 .items .item{
+	max-width: 40%;
+	margin: 20px 0 20px 0;
+}
+.about-page .section.middle .part3 .items{
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: space-around;
+}
+.about-page .section.middle .part3 .items .item{
+	max-width: 80%;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	margin: 10px 0 10px 0;
+}
+.about-page .section.middle .part3 .items .item .text{
+	text-align: center;
+}
+.about-page .section.middle .part3 .items .item .line{
+	width: 1px;
+	height: 50px;
+	background-color: #00223A;
+
+}
+.about-page .section.middle .part4 .items{
+	display: flex;
+	flex-flow: row wrap;
+	max-width: 70%;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+.about-page .section.middle .part4 .items .item{
+	margin: 0 15px 0 15px;
+}
+.about-page .section.middle .part5 .items{
+	display: flex;
+	flex-flow: column wrap;
+	max-width: 70%;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+.about-page .section.middle .part5 .items .item{
+	text-align: center;
+}
+.about-page .section.right{
+	position: relative;
+}
+.about-page .section.right .sub-menu{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	transform: translateX(0);
+	z-index: 30;
+	right: 2%;
+	top: 8%;
+	position: fixed;
+	width: 15%;
+	border: 0px solid red;
+	transition: 0.5s all;
+}
+.about-page .section.right .sub-menu .item{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 30px;
+	margin: 0px 20px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.7);
+	color: rgb(0, 34, 58, 0.7);
+	margin: 10px 0 10px 0;
+	text-decoration: none;
+
+	transition: 0.5s all;
+	z-index: 30;
+	cursor: pointer;
+	border: 0px solid green;
+	text-align: right;
+	transition: 0.5s all;
+}
+.about-page .section.right .sub-menu .item:hover{
+	transition: 0.5s all;
+	transform: translateX(-5px);
+	color: rgb(0, 34, 58, 1);
+}
+.about-page .section.right .sub-menu .item.active{
+	color: rgb(0, 34, 58, 1);
+}
+
+
+/* SROLLBAR */
+::-webkit-scrollbar{
+	width: 10px;
+	display: none;
+}
+::-webkit-scrollbar-thumb{
+	background: rgba(255, 255, 255, 0.25);
+}
+::-webkit-scrollbar-thumb:hover{
+	background-color: rgba(255, 255, 255, 0.5);
+}
+::-webkit-scrollbar-track{
+	background: black;
+}
+::-webkit-scrollbar-corner{
+	background: black;
+}
 
 /* ANIMATIONS */
 @keyframes blob-expand-animation{

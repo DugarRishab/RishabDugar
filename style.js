@@ -1,7 +1,11 @@
 window.onload = () => {
 	mouseFunctions();
 	pageChange();
-	
+	const body = document.querySelector("body");
+	if (body.classList.contains("about-me")) {
+		subMenuNav();
+		scrollAboutMe();
+	}
 }
 const mouseFunctions = () => {
 	let mousex = 0, mousey = 0;
@@ -110,15 +114,67 @@ const pageChange = () => {
 		console.log('click detected');
 		
 		//aboutToken.style.opacity = "100%";
+		subMenuNav();
+		scrollAboutMe();
 	});
 
 	homeBtn.addEventListener('click', () => {
+
+		
 
 		body.classList.remove("home");
 		body.classList.remove("about-me");
 		body.classList.add("home");
 		aboutPage.classList.remove('active');
 		homePage.classList.add('active');
-		console.log('click detected');
+		//console.log('click detected');
 	});
+
+	mouseFunctions();
+}
+const subMenuNav = () => {
+
+	window.addEventListener("scroll", () => {
+		const subMenu = document.querySelector(".sub-menu");
+		const subMenuItems = subMenu.querySelectorAll(".item");
+
+		//console.log("scrolling...");
+
+		subMenuItems.forEach(item => {
+			const element = document.querySelector(item.getAttribute('data-target'));
+			const top = element.getBoundingClientRect().top;
+
+			//console.log("element: ", element);
+			//console.log("top", top);
+
+			if (top < 250) {
+
+				subMenuItems.forEach(el => {
+					el.classList.remove("active");
+				})
+				item.classList.add("active");
+				
+			}
+
+		});
+	});
+
+}
+const scrollAboutMe = () => {
+	const subMenu = document.querySelector(".sub-menu");
+	const subMenuItems = subMenu.querySelectorAll(".item");
+
+	subMenuItems.forEach(item => {
+		item.addEventListener("click", () => {
+			console.log("click detected");
+			const element = document.querySelector(item.getAttribute('data-target'));
+			const top = element.offsetTop;
+
+			console.log("element", element);
+			console.log('top', top);
+
+
+			window.scrollTo(0, top);
+		})
+	})
 }
