@@ -472,6 +472,9 @@ body.about-me .menu .item:hover{
 .about-page .section.middle .part5 .items .item{
 	text-align: center;
 }
+.about-page .section.middle .part5 .items .item .button{
+	margin-top: 20px;
+}
 .about-page .section.right{
 	position: relative;
 }
