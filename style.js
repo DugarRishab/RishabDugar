@@ -132,12 +132,18 @@ const pageChange = () => {
 		});
 		homeBtn.classList.add("active");
 
+		
+
 		body.classList.remove("home");
 		body.classList.remove("about-me");
 		body.classList.add("home");
 		aboutPage.classList.remove('active');
 		homePage.classList.add('active');
 		//console.log('click detected');
+
+		window.scrollTo(0, 0);
+		//window.scrollY(0, 0);
+		
 	});
 
 	mouseFunctions();

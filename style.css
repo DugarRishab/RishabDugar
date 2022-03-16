@@ -230,6 +230,7 @@ body.about-me{
 	flex-flow: row nowrap;
 	color: whitesmoke;
 	border: 0px solid red;
+	-transition: 0.5s all;
 }
 .menu .item{
 	font-family: 'Roboto';
@@ -305,7 +306,7 @@ body.about-me .menu .item.active{
 .about-page{
 	display: flex;
 	flex-direction: row;
-	border: 2px solid cyan;
+	border: 0px solid cyan;
 	width: 100vw;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -384,7 +385,7 @@ body.about-me .menu .item.active{
 	background-clip: text;
 	text-fill-color: transparent;
 
-	text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+	text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
 }
 .about-page .sub-heading{
 	font-family: 'Roboto';
