@@ -78,8 +78,11 @@ const mouseFunctions = () => {
 const pageChange = () => {
 	const loadingTime = 2000;
 	const body = document.querySelector("body");
-	const homeBtn = document.querySelector("#home-btn");
-	const aboutBtn = document.querySelector("#about-me-btn");
+
+	const menu = document.querySelector(".menu");
+	const menuItems = menu.querySelectorAll(".item");
+	const homeBtn = menu.querySelector("#home-btn");
+	const aboutBtn = menu.querySelector("#about-me-btn");
 
 	const homePage = document.querySelector("#home-page");
 	const aboutPage = document.querySelector("#about-me-page");
@@ -89,6 +92,10 @@ const pageChange = () => {
 	aboutBtn.addEventListener('click', () => {
 
 		aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
+		menuItems.forEach(item => {
+			item.classList.remove("active");
+		});
+		aboutBtn.classList.add("active");
 		setTimeout(() => {
 			body.classList.remove("home");
 			body.classList.add("about-me");
@@ -120,7 +127,10 @@ const pageChange = () => {
 
 	homeBtn.addEventListener('click', () => {
 
-		
+		menuItems.forEach(item => {
+			item.classList.remove("active");
+		});
+		homeBtn.classList.add("active");
 
 		body.classList.remove("home");
 		body.classList.remove("about-me");
@@ -174,7 +184,7 @@ const scrollAboutMe = () => {
 			console.log('top', top);
 
 
-			window.scrollTo(0, top);
+			window.scrollTo(0, top - 100);
 		})
 	})
 }

@@ -241,6 +241,7 @@ body.about-me{
 	letter-spacing: 0.02em;
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.7);
+	text-decoration: none;
 
 	transition: 0.5s all;
 	z-index: 30;
@@ -251,6 +252,10 @@ body.about-me{
 	color: rgba(255, 255, 255, 1);
 	transition: 0.5s all;
 	transform: translateY(-10px);
+}
+.menu .item.active{
+	color: rgba(255, 255, 255, 1);
+	font-weight: 500;
 }
 body.about-me .menu{
 	flex-direction: column;
@@ -268,6 +273,11 @@ body.about-me .menu .item:hover{
 	transform: translateX(5px);
 	color: rgb(0, 34, 58, 1);
 }
+body.about-me .menu .item.active{
+	color: rgb(0, 34, 58, 1);
+	font-weight: 500;
+}
+
 
 /* BUTTONS */
 .button{
@@ -417,7 +427,7 @@ body.about-me .menu .item:hover{
 .about-page .section.middle .part2 .items{
 	display: flex;
 	flex-flow: column wrap;
-	max-height: 1000px;
+	max-height: 1200px;
 	align-items: center;
 	justify-content: space-around;
 	border: 0px solid rgb(0, 102, 128);
@@ -519,6 +529,7 @@ body.about-me .menu .item:hover{
 }
 .about-page .section.right .sub-menu .item.active{
 	color: rgb(0, 34, 58, 1);
+	font-weight: 500;
 }
 
 
