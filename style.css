@@ -1,22 +1,40 @@
 body, html{
-	position: relative;
+	-position: relative;
 	height: 100%;
 	width: 100%;
 	margin: 0;
 	scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
 }
 body.home{
-	background-color: rgba(2, 20, 34, 1);
+	background: rgba(2, 20, 34, 1);
 	overflow: hidden;
-	transition: 2s all;
+	overflow-y: scroll;
+	transition: 1s all;
+	
 }
 body.about-me{
 	background: linear-gradient(180deg, #FFA4C5 -16.41%, #76CEFF 153.1%);
 	-overflow: hidden;
 	overflow-x: hidden;
+	-overflow-y: scroll;
 	transition: 1s all;
 	background-size: 100vw 5000px;
 	scroll-behavior: smooth;
+}
+body.projects{
+	background-color: rgba(2, 20, 34, 1);
+	overflow: hidden;
+	overflow-y: hidden;
+	transition: 1s all;
+	background: linear-gradient(123.23deg, #011829 15.56%, #011B2E 50.63%, #DA2B40 119.76%);
+	-position: relative;
+	margin: 0;
+	-background-size: 100vw 2000px;
+	background-position: center;
+	padding: 0;
+	-height: 2500px;
 }
 
 .circle, .bg-circle{
@@ -32,6 +50,7 @@ body.about-me{
 	backdrop-filter: hue-rotate(90deg);
 	transition: 0.2s;
 	z-index: 10;
+	pointer-events: none;
 }
 .bg-circle{
 	background-color: rgba(255, 255, 255, 0.25);
@@ -44,6 +63,8 @@ body.about-me{
 .hoverables{
 	z-index: 40;
 }
+
+/* PROJECT CARDS */
 .projects-bg{
 	border: 0px solid red;
 	position: fixed;
@@ -54,6 +75,9 @@ body.about-me{
 	height: 90vh;
 	margin-top: 5vh;
 	z-index: -50;
+	transition: 0.5s all;
+	border-radius: 15px;
+	box-sizing: border-box;
 }
 .projects-bg .item{
 	width: 30%;
@@ -67,6 +91,82 @@ body.about-me{
 	-opacity: 50%;
 	transition: 0.5s all;
 }
+.projects-bg .item .content{
+	display: none;
+	width: 80%;
+	margin: auto;
+}
+body.projects .projects-bg {
+	z-index: 0;
+	transform: translateX(1%) translateY(-5%);
+	position: absolute;
+	height: fit-content;
+	border: 0px solid navajowhite;
+	align-items: center;
+	justify-content: flex-start;
+	top: 100px;
+}
+body.projects .projects-bg .item{
+	transform: rotate(0deg) translateY(10%) translateX(15%);
+	backdrop-filter: blur(10px);
+	margin: 0 20px 0 20px;
+	border: 0px solid greenyellow;
+}
+body.projects .projects-bg .item .content{
+	opacity: 100%;
+	display: flex;
+	flex-direction: column;
+	margin: 20px auto 20px auto;
+}
+body.projects .projects-bg .item .content .img{
+	width: 100%;
+	margin: auto;
+	border: 1px solid rgb(255, 255, 255, 0.2);
+	overflow: hidden;
+	transition: 0.5s all;
+	border-radius: 5px;
+	margin: 10px 0 10px 0;
+	box-sizing: border-box;
+}
+body.projects .projects-bg .item .content .img img{
+	width: 100%;
+	transition: 0.5s all;
+	opacity: 70%;
+}
+body.projects .projects-bg .item .content .img img:hover{
+	transform: scale(1.1);
+	opacity: 100%;
+}
+body.projects .projects-bg .item .content .icons{
+	display: flex;
+	flex-direction: row;
+	margin: 10px 0 10px 0;
+}
+body.projects .projects-bg .item .content .icons i{
+	margin: 0 20px 0 0;
+	font-size: 28px;
+	color: rgb(255, 255, 255, 0.7);
+	position: relative;
+}
+body.projects .projects-bg .item .content .icons i:hover{
+	color: rgb(255, 255, 255, 1);
+}
+body.projects .projects-bg .item .content .icons i:hover::after{
+	content: "Github";
+	padding: 5px 10px 5px 10px;
+	background-color: rgba(251, 154, 183, 0.7);
+	position: absolute;
+	bottom: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 15px;
+	
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 20px;
+}
 .home-page{
 	opacity: 0%;
 	z-index: -100;
@@ -79,7 +179,7 @@ body.about-me{
 }
 .home-page.active{
 	opacity: 100%;
-	z-index: 30;
+	z-index: 0;
 }
 .about-page{
 	opacity: 0%;
@@ -88,11 +188,16 @@ body.about-me{
 }
 .about-page.active{
 	opacity: 100%;
-	z-index: 30;
+	z-index: 00;
 }
 .projects-page{
 	opacity: 0%;
 	z-index: -100;
+	height: 2000px;
+}
+.projects-page.active{
+	opacity: 100%;
+	z-index: 0;
 }
 
 /* HOME PAGE */
@@ -111,6 +216,10 @@ body.about-me{
 	border: 0px solid red;
 	margin: 20% 0 0 10%;
 	transition: 0.5s all;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	
 }
 .home-page .section.left .text .intro{
 	color: whitesmoke;
@@ -230,7 +339,7 @@ body.about-me{
 	flex-flow: row nowrap;
 	color: whitesmoke;
 	border: 0px solid red;
-	-transition: 0.5s all;
+	transition: 0.5s all;
 }
 .menu .item{
 	font-family: 'Roboto';
@@ -258,6 +367,7 @@ body.about-me{
 	color: rgba(255, 255, 255, 1);
 	font-weight: 500;
 }
+
 body.about-me .menu{
 	flex-direction: column;
 	align-items: flex-start;
@@ -279,6 +389,30 @@ body.about-me .menu .item.active{
 	font-weight: 500;
 }
 
+body.projects .menu{
+	flex-direction: column;
+	align-items: flex-end;
+	top: 8%; 
+	left: auto;
+	right: 10vh;
+	bottom: auto;
+	border: 0px solid green;
+	transform: translateX(0);
+}
+body.projects .menu .item{
+	color: rgba(255, 255, 255, 0.7);
+	margin: 5px 0 5px 0;
+}
+body.projects .menu .item:hover{
+	color: rgba(255, 255, 255, 1);
+	transition: 0.5s all;
+	transform: translateX(-5px);
+	-color: rgb(0, 34, 58, 1);
+}
+body.projects .menu .item.active{
+	color: rgb(255, 255, 255);
+	font-weight: 500;
+}
 
 /* BUTTONS */
 .button{
@@ -302,49 +436,7 @@ body.about-me .menu .item.active{
 	-border: 4px solid #00223A;
 }
 
-/* ABOUT ME */
-.about-page{
-	display: flex;
-	flex-direction: row;
-	border: 0px solid cyan;
-	width: 100vw;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	height: 4200px;
-	transition: 0.5s all;
-	scroll-behavior: smooth;
-}
-.about-page .section.left{
-	width: 15%;
-	height: 100vh;
-	border: 0px solid red;
-	max-width: 350px;
-}
-.about-page .section.right{
-	width: 20%;
-	height: 100vh;
-	border: 0px solid blue;
-	max-width: 400px;
-}
-.about-page .section.middle{
-	width: 50%;
-	height: 100vh;
-	flex-grow: 1;
-	border: 0px solid green;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.about-page .section.middle .part{
-	height: fit-content;
-	width: 100%;
-	border: 0px solid yellow;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: 50px 0 50px 0;
-}
+/* FONTS */
 .about-page .title{
 	font-family: 'Roboto';
 	font-style: normal;
@@ -366,7 +458,6 @@ body.about-me .menu .item.active{
 	text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 	margin: 100px 0 0 0;
 }
-
 .about-page .heading{
 	font-family: 'Roboto';
 	font-style: normal;
@@ -418,6 +509,105 @@ body.about-me .menu .item.active{
 	letter-spacing: 0.02em;
 
 	color: rgba(0, 34, 58, 0.7);
+}
+body.projects .sub-heading{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 45px;
+	margin: 10px 0 15px 0;
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+
+	color: #FFFFFF;
+	text-decoration: none;
+}
+body.projects .text{
+
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 35px;
+	
+	/* or 160% */
+
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+
+	color: rgb(245, 245, 245, 0.7);
+}
+body.projects .projects-page .title{
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 80px;
+	/* line-height: 94px; */
+	/* identical to box height */
+
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.02em;
+
+	background: #FFFFFF;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+
+	text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+	margin: 25px 0 25px 5vw;
+
+}
+
+
+/* ABOUT ME */
+.about-page{
+	display: flex;
+	flex-direction: row;
+	border: 0px solid cyan;
+	width: 100vw;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 4200px;
+	transition: 0.5s all;
+	scroll-behavior: smooth;
+}
+.about-page .section.left{
+	width: 15%;
+	height: 100vh;
+	border: 0px solid red;
+	max-width: 350px;
+}
+.about-page .section.right{
+	width: 20%;
+	height: 100vh;
+	border: 0px solid blue;
+	max-width: 400px;
+}
+.about-page .section.middle{
+	width: 50%;
+	height: 100vh;
+	flex-grow: 1;
+	border: 0px solid green;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.about-page .section.middle .part{
+	height: fit-content;
+	width: 100%;
+	border: 0px solid yellow;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 50px 0 50px 0;
 }
 .about-page .section.middle .part2{
 	display: flex;
@@ -571,4 +761,10 @@ body.about-me .menu .item.active{
 		transform: scale(1);
 	}
 
+}
+@keyframes projects-bg-animate{
+	0%{
+		opacity: 0;
+
+	}
 }

@@ -6,6 +6,10 @@ window.onload = () => {
 		subMenuNav();
 		scrollAboutMe();
 	}
+	if (body.classList.contains("home")) {
+
+		scrollAboutMe();
+	}
 }
 const mouseFunctions = () => {
 	let mousex = 0, mousey = 0;
@@ -83,67 +87,112 @@ const pageChange = () => {
 	const menuItems = menu.querySelectorAll(".item");
 	const homeBtn = menu.querySelector("#home-btn");
 	const aboutBtn = menu.querySelector("#about-me-btn");
+	const projectsBtn = menu.querySelector("#projects-btn");
 
 	const homePage = document.querySelector("#home-page");
 	const aboutPage = document.querySelector("#about-me-page");
+	const projectsPage = document.querySelector("#projects-page");
 
 	const aboutToken = document.querySelector("#about-me-blob");
+	const projectsToken = document.querySelector(".projects-bg");
 
 	aboutBtn.addEventListener('click', () => {
 
-		aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
+		let currentPage;
+
+		if (body.classList.contains('home')) {
+			currentPage = 'home';
+		}
+		if (body.classList.contains('projects')) {
+			currentPage = 'projects';
+		}
+
 		menuItems.forEach(item => {
 			item.classList.remove("active");
 		});
 		aboutBtn.classList.add("active");
-		setTimeout(() => {
-			body.classList.remove("home");
-			body.classList.add("about-me");
-			
-		}, loadingTime * 2 / 3);
-		setTimeout(() => {
-			
-			//aboutPage.classList.add('active');
-			homePage.classList.remove('active');
-			aboutToken.style.animation = "";
-			//body.classList = "";
-			//body.classList.add("about-me");
-			//body.className = "about-me";
 
-		}, loadingTime * 4 / 5);
-		setTimeout(() => {
+		
+		
+		if (currentPage == 'home') {
+			aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
+
+			setTimeout(() => {
+
+				body.classList.remove(...body.classList);
+				body.classList.add("about-me");
+				
+			}, loadingTime * 2 / 3);
+			setTimeout(() => {
+				
+				homePage.classList.remove('active');
+				projectsPage.classList.remove('active');
+				aboutToken.style.animation = "";
+	
+			}, loadingTime * 4 / 5);
+			setTimeout(() => {
+				
+				aboutPage.classList.add('active');
+				
+	
+			}, loadingTime * 5 / 5);
+
+		}
+		if (currentPage == 'projects') {
+			body.classList.remove(...body.classList);
+			body.classList.add("about-me");
+
+			homePage.classList.remove('active');
+			projectsPage.classList.remove('active');
 			
 			aboutPage.classList.add('active');
-			
+		}
 
-		}, loadingTime * 5 / 5);
 		
-		console.log('click detected');
+		
+		//	console.log('click detected');
 		
 		//aboutToken.style.opacity = "100%";
 		subMenuNav();
 		scrollAboutMe();
 	});
-
 	homeBtn.addEventListener('click', () => {
 
 		menuItems.forEach(item => {
 			item.classList.remove("active");
 		});
 		homeBtn.classList.add("active");
-
 		
-
-		body.classList.remove("home");
-		body.classList.remove("about-me");
+		body.classList.remove(...body.classList);
 		body.classList.add("home");
+
 		aboutPage.classList.remove('active');
+		projectsPage.classList.remove('active');
 		homePage.classList.add('active');
 		//console.log('click detected');
 
 		window.scrollTo(0, 0);
+		scrollingEffectOnHome();
 		//window.scrollY(0, 0);
 		
+	});
+	projectsBtn.addEventListener('click', () => {
+		menuItems.forEach(item => {
+			item.classList.remove("active");
+		});
+		projectsBtn.classList.add("active");
+
+		
+		body.classList.remove(...body.classList);
+		//body.classList.remove("projects");
+		//body.classList.remove("about-me");
+		body.classList.add("projects");
+		aboutPage.classList.remove('active');
+		homePage.classList.remove('active');
+		projectsPage.classList.add('active');
+		//console.log('click detected');
+
+		window.scrollTo(0, 0);
 	});
 
 	mouseFunctions();
@@ -193,4 +242,55 @@ const scrollAboutMe = () => {
 			window.scrollTo(0, top - 100);
 		})
 	})
+}
+const scrollingEffectOnHome = () => {
+	
+	console.log("scrolling");
+
+		const loadingTime = 2000;
+		const body = document.querySelector("body");
+
+		const menu = document.querySelector(".menu");
+		const menuItems = menu.querySelectorAll(".item");
+		const homeBtn = menu.querySelector("#home-btn");
+		const aboutBtn = menu.querySelector("#about-me-btn");
+		const projectsBtn = menu.querySelector("#projects-btn");
+
+		const homePage = document.querySelector("#home-page");
+		const aboutPage = document.querySelector("#about-me-page");
+		const projectsPage = document.querySelector("#projects-page");
+
+		const aboutToken = document.querySelector("#about-me-blob");
+		const projectsToken = document.querySelector(".projects-bg");
+
+		window.addEventListener("scroll", () => {
+			
+			menuItems.forEach(item => {
+				item.classList.remove("active");
+			});
+			aboutBtn.classList.add("active");
+
+			aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
+
+			setTimeout(() => {
+
+				body.classList.remove(...body.classList);
+				body.classList.add("about-me");
+				window.scrollTo(0, 0);
+				
+			}, loadingTime * 2 / 3);
+			setTimeout(() => {
+				
+				homePage.classList.remove('active');
+				projectsPage.classList.remove('active');
+				aboutToken.style.animation = "";
+	
+			}, loadingTime * 4 / 5);
+			setTimeout(() => {
+				
+				aboutPage.classList.add('active');
+				
+	
+			}, loadingTime * 5 / 5);
+		});
 }
