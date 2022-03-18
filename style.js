@@ -8,7 +8,8 @@ window.onload = () => {
 	}
 	if (body.classList.contains("home")) {
 
-		scrollAboutMe();
+		//scrollAboutMe();
+		scrollingEffectOnHome();
 	}
 }
 const mouseFunctions = () => {
@@ -172,7 +173,7 @@ const pageChange = () => {
 		//console.log('click detected');
 
 		window.scrollTo(0, 0);
-		scrollingEffectOnHome();
+		//scrollingEffectOnHome();
 		//window.scrollY(0, 0);
 		
 	});
@@ -245,8 +246,6 @@ const scrollAboutMe = () => {
 }
 const scrollingEffectOnHome = () => {
 	
-	console.log("scrolling");
-
 		const loadingTime = 2000;
 		const body = document.querySelector("body");
 
@@ -263,34 +262,45 @@ const scrollingEffectOnHome = () => {
 		const aboutToken = document.querySelector("#about-me-blob");
 		const projectsToken = document.querySelector(".projects-bg");
 
-		window.addEventListener("scroll", () => {
+	window.addEventListener("scroll", (e) => {
+		console.log("scrolling");
 			
+		e.preventDefault();
+		console.log(window.scrollY);
+
+		if (window.scrollY > 50) {
 			menuItems.forEach(item => {
 				item.classList.remove("active");
 			});
 			aboutBtn.classList.add("active");
-
+	
 			aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
-
+	
 			setTimeout(() => {
-
+	
 				body.classList.remove(...body.classList);
 				body.classList.add("about-me");
 				window.scrollTo(0, 0);
-				
+					
 			}, loadingTime * 2 / 3);
 			setTimeout(() => {
-				
+					
 				homePage.classList.remove('active');
 				projectsPage.classList.remove('active');
 				aboutToken.style.animation = "";
-	
+		
 			}, loadingTime * 4 / 5);
 			setTimeout(() => {
-				
+					
 				aboutPage.classList.add('active');
-				
-	
+					
+		
 			}, loadingTime * 5 / 5);
-		});
+		}
+			
+		
+	},{
+		passive: false
+	});
 }
+
