@@ -263,44 +263,45 @@ const scrollingEffectOnHome = () => {
 		const projectsToken = document.querySelector(".projects-bg");
 
 	window.addEventListener("scroll", (e) => {
-		console.log("scrolling");
+		
+		if (body.classList.contains("home")) {
+			console.log("scrolling");
 			
-		e.preventDefault();
-		console.log(window.scrollY);
+			e.preventDefault();
+			console.log(window.scrollY);
 
-		if (window.scrollY > 50) {
-			menuItems.forEach(item => {
-				item.classList.remove("active");
-			});
-			aboutBtn.classList.add("active");
-	
-			aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
-	
-			setTimeout(() => {
-	
-				body.classList.remove(...body.classList);
-				body.classList.add("about-me");
-				window.scrollTo(0, 0);
-					
-			}, loadingTime * 2 / 3);
-			setTimeout(() => {
-					
-				homePage.classList.remove('active');
-				projectsPage.classList.remove('active');
-				aboutToken.style.animation = "";
+			if (window.scrollY > 50) {
+				menuItems.forEach(item => {
+					item.classList.remove("active");
+				});
+				aboutBtn.classList.add("active");
 		
-			}, loadingTime * 4 / 5);
-			setTimeout(() => {
-					
-				aboutPage.classList.add('active');
-					
+				aboutToken.style.animation = `blob-expand-animation ${loadingTime}ms 1`;
 		
-			}, loadingTime * 5 / 5);
-		}
+				setTimeout(() => {
+		
+					body.classList.remove(...body.classList);
+					body.classList.add("about-me");
+					window.scrollTo(0, 0);
+						
+				}, loadingTime * 2 / 3);
+				setTimeout(() => {
+						
+					homePage.classList.remove('active');
+					projectsPage.classList.remove('active');
+					aboutToken.style.animation = "";
 			
+				}, loadingTime * 4 / 5);
+				setTimeout(() => {
+						
+					aboutPage.classList.add('active');
+						
+			
+				}, loadingTime * 5 / 5);
+			}
+		}
 		
 	},{
 		passive: false
 	});
 }
-
