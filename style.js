@@ -41,7 +41,6 @@ const mouseFunctions = () => {
 		}
 	});
 	
-
 	document.addEventListener("click", () => {
 		//mouseCircle.style.opacity = "0%";
 		mouseBgCircle.style.opacity = "0%";
@@ -107,7 +106,7 @@ const pageChange = () => {
 		if (body.classList.contains('projects')) {
 			currentPage = 'projects';
 		}
-
+		//menu.style.display = "none";
 		menuItems.forEach(item => {
 			item.classList.remove("active");
 		});
@@ -134,7 +133,7 @@ const pageChange = () => {
 			setTimeout(() => {
 				
 				aboutPage.classList.add('active');
-				
+				aboutToken.style.transform = "scale(0.8)";
 	
 			}, loadingTime * 5 / 5);
 
@@ -150,7 +149,7 @@ const pageChange = () => {
 		}
 
 		
-		
+		menu.style.display = "flex";
 		//	console.log('click detected');
 		
 		//aboutToken.style.opacity = "100%";
@@ -159,10 +158,49 @@ const pageChange = () => {
 	});
 	homeBtn.addEventListener('click', () => {
 
+		//menu.style.display = "none";
+		let currentPage;
+
+		if (body.classList.contains('home')) {
+			currentPage = 'home';
+		}
+		if (body.classList.contains('about-me')) {
+			currentPage = 'about-me';
+		}
+
 		menuItems.forEach(item => {
 			item.classList.remove("active");
 		});
 		homeBtn.classList.add("active");
+
+			
+		// if (currentPage == 'about-me') {
+		// 	homePage.classList.add('active');
+		// 	aboutToken.style.animation = "blob-contract-animate 20s 20";
+
+		// 	body.classList.remove(...body.classList);
+		// 	body.classList.add("home");
+			
+			
+		// 	setTimeout(() => {
+				
+		// 		aboutPage.classList.remove('active');
+		// 		projectsPage.classList.remove('active');
+		// 		window.scrollTo(0, 0);
+
+		// 	}, 1 * loadingTime / 3);
+		// 	// setTimeout(() => {
+				
+		// 	// }, 4 * loadingTime / 5);
+		// 	// setTimeout(() => {
+				
+				
+		// 	// }, 5 * loadingTime / 5);
+
+		// 	aboutToken.style.animation = "";
+		// 	menu.style.display = "flex";
+		// }
+		
 		
 		body.classList.remove(...body.classList);
 		body.classList.add("home");
@@ -178,6 +216,8 @@ const pageChange = () => {
 		
 	});
 	projectsBtn.addEventListener('click', () => {
+
+		menu.style.display = "none";
 		menuItems.forEach(item => {
 			item.classList.remove("active");
 		});
@@ -194,9 +234,10 @@ const pageChange = () => {
 		//console.log('click detected');
 
 		window.scrollTo(0, 0);
+		menu.style.display = "flex";
 	});
 
-	mouseFunctions();
+	// mouseFunctions();
 }
 const subMenuNav = () => {
 
@@ -259,8 +300,10 @@ const scrollingEffectOnHome = () => {
 		const aboutPage = document.querySelector("#about-me-page");
 		const projectsPage = document.querySelector("#projects-page");
 
-		const aboutToken = document.querySelector("#about-me-blob");
-		const projectsToken = document.querySelector(".projects-bg");
+	const aboutToken = document.querySelector("#about-me-blob");
+	const projectsToken = document.querySelector(".projects-bg");
+	
+	let previousScroll = 50;
 
 	window.addEventListener("scroll", (e) => {
 		
@@ -268,9 +311,9 @@ const scrollingEffectOnHome = () => {
 			console.log("scrolling");
 			
 			e.preventDefault();
-			console.log(window.scrollY);
+			console.log(previousScroll - window.scrollY);
 
-			if (window.scrollY > 50) {
+			if (window.scrollY > previousScroll) {
 				menuItems.forEach(item => {
 					item.classList.remove("active");
 				});
@@ -299,7 +342,10 @@ const scrollingEffectOnHome = () => {
 			
 				}, loadingTime * 5 / 5);
 			}
+			
 		}
+		
+		previousScroll = window.scrollY;
 		
 	},{
 		passive: false

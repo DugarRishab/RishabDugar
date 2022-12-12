@@ -7,6 +7,9 @@ body, html{
 	margin: 0;
 	padding: 0;
 }
+body{
+	background: rgba(2, 20, 34, 1);
+}
 body.home{
 	background: rgba(2, 20, 34, 1);
 	overflow: hidden;
@@ -25,16 +28,16 @@ body.about-me{
 }
 body.projects{
 	background-color: rgba(2, 20, 34, 1);
-	overflow: hidden;
-	overflow-y: hidden;
+	-overflow: hidden;
+	-overflow-y: hidden;
 	transition: 1s all;
 	background: linear-gradient(123.23deg, #011829 15.56%, #011B2E 50.63%, #DA2B40 119.76%);
 	-position: relative;
 	margin: 0;
-	-background-size: 100vw 2000px;
+	background-size: 100vw 2000px;
 	background-position: center;
 	padding: 0;
-	-height: 2500px;
+	height: 2500px;
 }
 
 .circle, .bg-circle{
@@ -151,8 +154,24 @@ body.projects .projects-bg .item .content .icons i{
 body.projects .projects-bg .item .content .icons i:hover{
 	color: rgb(255, 255, 255, 1);
 }
-body.projects .projects-bg .item .content .icons i:hover::after{
+body.projects .projects-bg .item .content .icons i#github-icon:hover::after{
 	content: "Github";
+	padding: 5px 10px 5px 10px;
+	background-color: rgba(251, 154, 183, 0.7);
+	position: absolute;
+	bottom: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 15px;
+	
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 20px;
+}
+body.projects .projects-bg .item .content .icons i#web-icon:hover::after{
+	content: "Website";
 	padding: 5px 10px 5px 10px;
 	background-color: rgba(251, 154, 183, 0.7);
 	position: absolute;
@@ -182,6 +201,7 @@ body.projects .projects-bg .item .content .icons i:hover::after{
 .home-page.active{
 	opacity: 100%;
 	z-index: 0;
+	-background: rgba(2, 20, 34, 1);
 }
 .about-page{
 	opacity: 0%;
@@ -368,6 +388,7 @@ body.projects .projects-bg .item .content .icons i:hover::after{
 	color: rgba(255, 255, 255, 1);
 	transition: 0.5s all;
 	transform: translateY(-10px);
+	font-size: 30px;
 }
 .menu .item.active{
 	color: rgba(255, 255, 255, 1);
@@ -389,6 +410,7 @@ body.about-me .menu .item:hover{
 	transition: 0.5s all;
 	transform: translateX(5px);
 	color: rgb(0, 34, 58, 1);
+	font-size: 20px;
 }
 body.about-me .menu .item.active{
 	color: rgb(0, 34, 58, 1);
@@ -729,7 +751,6 @@ body.projects .projects-page .title{
 	font-weight: 500;
 }
 
-
 /* SROLLBAR */
 ::-webkit-scrollbar{
 	width: 10px;
@@ -763,14 +784,35 @@ body.projects .projects-page .title{
 		transform: scale(100);
 	}
 	100%{
-		
 		transform: scale(1);
 	}
 
+}
+@keyframes blob-contract-animate{
+	0%{
+		opacity: 0%;
+		transform: scale(1000);
+	}
+	5%{
+		opacity: 100%;
+		transform: scale(1000);
+	}
+	100%{
+		opacity: 70%;
+		transform: scale(1);
+	}
 }
 @keyframes projects-bg-animate{
 	0%{
 		opacity: 0;
 
+	}
+}
+@keyframes home-page-animate{
+	0%{
+		transform: translateY(-100%);
+	}
+	100%{
+		transform: translateY(0);
 	}
 }
